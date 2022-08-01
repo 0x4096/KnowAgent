@@ -39,20 +39,13 @@ public class OpHostController {
         return Result.buildSucc();
     }
 
-    @ApiOperation(value = "删除主机 0：删除成功 10000：参数错误 23000：待删除主机在系统不存在 23004：主机存在关联的容器导致主机删除失败 22001：Agent存在未采集完的日志", notes = "")
+    @ApiOperation(value = "删除主机 0：删除成功 10000：参数错误 23000：待删除主机在系统不存在 23004：主机存在关联的容器导致主机删除失败 22001：Agent存在未采集完的日志 23008：主机存在关联的应用导致主机删除失败 ", notes = "")
     @RequestMapping(value = "/{hostId}", method = RequestMethod.DELETE)
     @ResponseBody
     public Result deleteHost(
-            @PathVariable Long hostId,
-            @RequestParam (value = "ignoreUncompleteCollect") Integer ignoreUncompleteCollect
+            @PathVariable Long hostId
     ) {
-        if(0 != ignoreUncompleteCollect & 1 != ignoreUncompleteCollect) {
-            return Result.build(
-                    ErrorCodeEnum.ILLEGAL_PARAMS.getCode(),
-                    "入参ignoreUncompleteCollect取值范围为[0,1]"
-            );
-        }
-        hostManageService.deleteHost(hostId, ignoreUncompleteCollect == 0 ? false : true, false, SpringTool.getUserName());
+        hostManageService.deleteHost(hostId, true, true, SpringTool.getUserName());
         return Result.buildSucc();
     }
 
