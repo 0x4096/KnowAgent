@@ -1444,3 +1444,5 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 insert into tb_agent_version (file_name, file_md5, file_type, description, operator, version)
 values ('output.tar.gz',	'5cc3bde3fea227d1fb1f83d289550dcb',	0,	'Agent安装包',	'System', '1.0.0');
+INSERT INTO `tb_kafka_cluster`
+VALUES ('kafka集群', 'localhost:9092', 'acks=-1,key.serializer=org.apache.kafka.common.serialization.StringSerializer,value.serializer=org.apache.kafka.common.serialization.StringSerializer,max.in.flight.requests.per.connection=1', NULL, 'System', 'metrics', 'errorlogs', 0, '2022-08-02 12:44:27', '2022-08-02 12:44:27');
