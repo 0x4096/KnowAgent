@@ -107,12 +107,6 @@
             <artifactId>httpmime</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.didichuxing.datachannel</groupId>
-            <artifactId>system-metrcis</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
         <!-- excel 读 写 -->
         <!--xls(03)-->
         <dependency>
